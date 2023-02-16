@@ -1,6 +1,7 @@
 import TaskList from './components/TaskList'
 import { useEffect, useState } from 'react'
 import { addTask, getTasks } from './services/taskServices'
+import axios from 'axios'
 
 const App = () => {
   const [task, setTask] = useState('')
@@ -17,6 +18,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    axios.defaults.baseURL = `${import.meta.env.VITE_APP_API_URL}`
     getAllTasks()
   }, [])
 
